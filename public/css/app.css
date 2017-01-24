@@ -7692,13 +7692,4 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Dancing Script', cursive;
 }
 
-div.main--img img.img-responsive {
-  padding: 0;
-  margin-top: -2%;
-}
-
-p i {
-  margin-top: 2rem;
-}
-
 /*# sourceMappingURL=app.css.map */

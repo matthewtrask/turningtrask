@@ -36,6 +36,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="text-center">Our Story</h2>
+                <p class="text-center">Coming soon!</p>
             </div>
         </div>
     </div>
