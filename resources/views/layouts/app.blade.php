@@ -48,12 +48,12 @@
                         &nbsp;
                     </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="">Ceremony</a></li>
-                        <li><a href="">Charleston</a></li>
-                        <li><a href="">Wedding Party</a></li>
-                        <li><a href="">Contact</a></li>
-                    </ul>
+                    {{--<ul class="nav navbar-nav navbar-right">--}}
+                        {{--<li><a href="">Ceremony</a></li>--}}
+                        {{--<li><a href="">Charleston</a></li>--}}
+                        {{--<li><a href="">Wedding Party</a></li>--}}
+                        {{--<li><a href="">Contact</a></li>--}}
+                    {{--</ul>--}}
 
                     <!-- Right Side Of Navbar -->
                     {{--<ul class="nav navbar-nav navbar-right">--}}
