@@ -11,8 +11,16 @@
     <title>@yield('title')</title>
 
     <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <link href="{{url('/')}}/css/app.css" rel="stylesheet">
+
+    <!-- Main Quill library -->
+    <script src="//cdn.quilljs.com/1.2.0/quill.js"></script>
+    <script src="//cdn.quilljs.com/1.2.0/quill.min.js"></script>
+
+    <!-- Theme included stylesheets -->
+    <link href="//cdn.quilljs.com/1.2.0/quill.snow.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.2.0/quill.bubble.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -38,7 +46,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Michael &amp; Lauren
+                        Lauren &amp; Michael
                     </a>
                 </div>
 
@@ -47,42 +55,6 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
-
-                    {{--<ul class="nav navbar-nav navbar-right">--}}
-                        {{--<li><a href="">Ceremony</a></li>--}}
-                        {{--<li><a href="">Charleston</a></li>--}}
-                        {{--<li><a href="">Wedding Party</a></li>--}}
-                        {{--<li><a href="">Contact</a></li>--}}
-                    {{--</ul>--}}
-
-                    <!-- Right Side Of Navbar -->
-                    {{--<ul class="nav navbar-nav navbar-right">--}}
-                        {{--<!-- Authentication Links -->--}}
-                        {{--@if (Auth::guest())--}}
-                            {{--<li><a href="{{ url('/login') }}">Login</a></li>--}}
-                            {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}
-                        {{--@else--}}
-                            {{--<li class="dropdown">--}}
-                                {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
-                                    {{--{{ Auth::user()->name }} <span class="caret"></span>--}}
-                                {{--</a>--}}
-
-                                {{--<ul class="dropdown-menu" role="menu">--}}
-                                    {{--<li>--}}
-                                        {{--<a href="{{ url('/logout') }}"--}}
-                                            {{--onclick="event.preventDefault();--}}
-                                                     {{--document.getElementById('logout-form').submit();">--}}
-                                            {{--Logout--}}
-                                        {{--</a>--}}
-
-                                        {{--<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">--}}
-                                            {{--{{ csrf_field() }}--}}
-                                        {{--</form>--}}
-                                    {{--</li>--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
-                        {{--@endif--}}
-                    {{--</ul>--}}
                 </div>
             </div>
         </nav>

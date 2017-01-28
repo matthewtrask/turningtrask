@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="header">
-        <h2 class="text-center">Michael &amp; Lauren</h2>
+        <h2 class="text-center">Lauren &amp; Michael</h2>
         <h4 class="text-center">Charleston, SC - 09-16-2017</h4>
     </div>
 
@@ -22,15 +22,16 @@
     <div class="couples--stories">
         <div class="row">
             <div class="col-sm-6 col-md-4">
-                <h2 class="text-center">Groom</h2>
-                <h3 class="text-center">Michael Trask</h3>
+                <h2 class="text-center">Bride</h2>
+                <h3 class="text-center">Lauren Glazer</h3>
             </div>
+
             <div class="col-md-4">
                 <p class="text-center"><i style="color: #FFDF00; margin-top: 2%" class="fa fa-heart-o fa-3x"></i></p>
             </div>
             <div class="col-sm-6 col-md-4">
-                <h2 class="text-center">Bride</h2>
-                <h3 class="text-center">Lauren Glazer</h3>
+                <h2 class="text-center">Groom</h2>
+                <h3 class="text-center">Michael Trask</h3>
             </div>
         </div>
         <div class="row">

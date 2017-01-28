@@ -13,3 +13,5 @@ Route::post('/contact', ['uses' => 'Wedding\ContactController@send']);
 
 Route::get('/party', ['uses' => 'Wedding\WeddingPartyController@party']);
 
+
+Route::get('/admin', ['uses' => 'Admin\AdminController@index']);

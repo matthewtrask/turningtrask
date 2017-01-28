@@ -179,6 +179,7 @@ return [
         /**
          * Third Party Services
          */
+        Collective\Html\HtmlServiceProvider::class,
         Ramsey\Laravel\OAuth2\Instagram\InstagramServiceProvider::class
 
     ],
@@ -209,8 +210,10 @@ return [
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
+        'Form' => Collective\Html\FormFacade::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
+        'Html' => Collective\Html\HtmlFacade::class,
         'Instagram' => Ramsey\Laravel\OAuth2\Instagram\Facades\Instagram::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
