@@ -9,6 +9,7 @@ class Charleston extends Model
     public $table = 'charleston';
 
     public $fillable = [
+        'name',
         'location',
         'business_type',
         'description',
