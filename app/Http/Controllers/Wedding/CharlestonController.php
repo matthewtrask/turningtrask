@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Wedding;
 
-use Illuminate\Http\Request;
+use App\Models\Charleston;
 use App\Http\Controllers\Controller;
 
 class CharlestonController extends Controller
 {
     public function index()
     {
-        return view('app.charleston');
+        $charleston = Charleston::all();
+
+        return view('app.charleston', ['charleston' => $charleston]);
     }
 }

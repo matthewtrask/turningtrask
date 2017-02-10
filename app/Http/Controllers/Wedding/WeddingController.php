@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Wedding;
 
-use Illuminate\Http\Request;
+use App\Models\About;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 
 class WeddingController extends Controller
 {
@@ -13,6 +12,8 @@ class WeddingController extends Controller
      */
     public function index()
     {
-        return view('app.home');
+        $about = About::all();
+
+        return view('app.home', ['about' => $about]);
     }
 }

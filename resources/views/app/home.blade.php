@@ -37,7 +37,9 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="text-center">Our Story</h2>
-                <p class="text-center">Coming soon!</p>
+                @foreach($about as $story)
+                    <p class="text-center">{{ $story->content }}</p>
+                @endforeach
             </div>
         </div>
     </div>
