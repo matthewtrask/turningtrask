@@ -21,13 +21,8 @@ class WeddingPartyController extends Controller
 
     public function index()
     {
-        return view('app.wedding-party');
-    }
-
-    public function party()
-    {
         $party = Party::all();
 
-        return $party;
+        return view('app.wedding-party', ['party' => $party]);
     }
 }
