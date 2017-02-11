@@ -56,7 +56,7 @@
                 </label><br>
                 <label>
                     <input type="checkbox" value="hotel"> Hotels
-                </label><br>
+           3     </label><br>
                 <label>
                     <input type="checkbox" value="store"> Shops
                 </label><br>

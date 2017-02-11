@@ -7,6 +7,7 @@ use App\Models\Charleston;
 use App\Models\WeddingParty;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -47,9 +48,12 @@ class AdminController extends Controller
         $location->name = $request->name;
         $location->location = $request->location;
         $location->business_type = $request->business_type;
+        $location->link = $request->link;
         $location->description = $request->description;
 
         $location->save();
+        
+        return redirect('/admin');
     }
 
     public function party(Request $request)
