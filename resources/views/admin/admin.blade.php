@@ -12,6 +12,7 @@
         <li id="wedding" role="presentation"><a href="#" onclick="weddingForm()">Wedding Party</a></li>
     </ul>
 
+
     <div class="container">
         <div class="form-group" id="aboutHide">
             <div class="col-sm-12" id="aboutFormText">
@@ -47,6 +48,12 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="link" class="col-sm-2 control-label">Website Link</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="link" name="link" placeholder="Website Link">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="business_type" class="col-sm-2 control-label">Business Type</label>
                         <div class="col-sm-10">
                             <select name="business_type" for="business_type" id="business_type" class="form-control">
@@ -54,7 +61,7 @@
                                 <option value="hotel">Hotel</option>
                                 <option value="bar">Bar</option>
                                 <option value="shop">Shop</option>
-                                <option value="history">Historical Interest</option>
+                                <option value="sightseeing">Historical Interest</option>
                             </select>
                         </div>
                     </div>

@@ -52,8 +52,8 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+                    <ul class="nav navbar-nav navbar-right">
+                        &nbsp;<li><a href="{{url('/')}}/charleston">Charleston</a></li>
                     </ul>
                 </div>
             </div>
