@@ -52,7 +52,7 @@ class AdminController extends Controller
         $location->description = $request->description;
 
         $location->save();
-        
+
         return redirect('/admin');
     }
 
