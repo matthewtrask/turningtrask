@@ -34,10 +34,36 @@
                 <div class="col-sm-9">
                     @foreach($about as $story)
                         <p> {{ $story->content }}</p>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Edit About Us</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post"  action="{{url('/')}}/admin/about" id="editAboutForm">
+                                            <label for="about"></label>
+                                            <input name="editAbout" id="about" type="text" hidden>
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <div id="editAboutForm">
+                                            </div>
+                                            <br>
+                                            <button id="editAboutSubmit" type="submit" class="btn btn-lg btn-default">Submit</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </div>
                 <div class="col-sm-3">
-                    <button class="btn btn-info" id="edit">Edit</button>
+                    <button class="btn btn-info" id="edit" data-toggle="modal" data-target="#myModal">Edit</button>
                     <button class="btn btn-warning" id="delete">Delete</button>
                 </div>
             </div>
@@ -89,14 +115,68 @@
                     </div>
                 </form>
             </div>
+            <div class="col-sm-12">
+                <br><br><hr>
+                @foreach($charleston as $sights)
+                <div class="col-sm-9">
+                    <p> {{ $sights->name }}</p>
+                    <p> {{ $sights->location }}</p>
+                    <p> {{ $sights->link }}</p>
+                    <p> {{ $sights->description }}</p>
+                    <hr>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-info" id="edit">Edit</button>
+                    <button class="btn btn-warning" id="delete">Delete</button>
+                </div>
+                @endforeach
+            </div>
         </div>
         <div class="form-group" id="weddingHide">
             <div class="col-sm-12">
                 <h2>Wedding Party</h2>
                 <p>Edit info about people in the party</p>
-                <form method="post" id="weddingFormText">
+                <form method="post" action="{{url('/')}}/admin/party" id="formWedding" class="form-horizontal" enctype="multipart/form-data">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="form-group">
+                        <label for="location" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="location" class="col-sm-2 control-label">Position</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="position" name="position" placeholder="Wedding Party Location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="location" class="col-sm-2 control-label">About</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="story" name="story" placeholder="Some details about them"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2">
 
-                    <button id="weddingSubmit" type="submit" class="btn btn-lg btn-default">Submit</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <label class="btn btn-primary" for="my-file-selector">
+                                <input id="my-file-selector" name="photo" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
+                                Upload Image
+                            </label>
+                            <span class='label label-info' id="upload-file-info"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2">
+
+                        </div>
+                        <div class="col-sm-10">
+                            <button id="weddingSubmit" type="submit" class="btn btn-lg btn-default">Submit</button>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -142,7 +222,7 @@
             theme: 'snow',
         });
 
-        const charlestonQuill = new Quill('div#charlestonForm', {
+        const editAboutQuill = new Quill('div#charlestonForm', {
             modules: {
                 toolbar: [
                     [{ header: [1, 2, false] }],
@@ -155,7 +235,8 @@
         });
 
         const aboutData = document.querySelector('#formAbout');
-        const charlestonData = document.querySelector('#formCharleston');
+        const editAboutData = document.querySelector('#formEditAbout');
+        const weddingSubmit = document.querySelector('#formWedding');
 
         aboutData.onsubmit = function () {
             const about = document.querySelector('input[name=about]');
@@ -181,26 +262,19 @@
             return false;
         };
 
-        charlestonData.onsubmit = function (e) {
-            const description = $('input#description').val();
+        editAboutData.onsubmit = function (e) {
+            const editAbout = document.querySelector('input[name=editAbout]');
+            about.value = JSON.stringify(aboutQuill.getContents());
+            const data = $(about).serialize();
             const token = $('meta[name="_token"]').attr('content').val();
-            const location = $('input#location').val();
-            const businessType = $('select#business_type').val();
-
-            const dataObject = {
-                description: description,
-                token: token,
-                location: location,
-                businessType: businessType
-            };
 
             $.ajax({
-                data: dataObject,
+                data: data,
                 type: 'POST',
                 beforeSend: function(request) {
                     request.setRequestHeader('X-CSRF-TOKEN', token);
                 },
-                url: '{{url('/')}}/admin/location',
+                url: '{{url('/')}}/admin/editAbout',
                 cache: false,
                 async: false,
                 success: function() {

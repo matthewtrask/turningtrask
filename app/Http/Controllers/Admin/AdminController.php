@@ -6,6 +6,7 @@ use App\Models\About;
 use App\Models\Charleston;
 use App\Models\WeddingParty;
 use App\Http\Controllers\Controller;
+use Aws\S3\S3Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -61,6 +62,22 @@ class AdminController extends Controller
 
     public function party(Request $request)
     {
+        $party = new WeddingParty();
+
+        $party->name = $request->name;
+        $party->position = $request->position;
+        $party->story = $request->story;
+        $party->image_name = $request->file('photo');
+
+        $party->save();
+
+        $this->s3client()->putObject([
+            'Bucket' => 'turningtrask',
+            'Key' => $request->file('photo')->getClientOriginalName(),
+            'Body' => $request->file('photo')
+        ]);
+
+        return redirect('/admin');
 
     }
 
@@ -72,5 +89,13 @@ class AdminController extends Controller
     public function destroyAbout(Request $request)
     {
 
+    }
+
+    private function s3client()
+    {
+        return $client = $s3 = new S3Client([
+            'version' => 'latest',
+            'region' => 'us-east-1'
+        ]);
     }
 }
