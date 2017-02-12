@@ -28,7 +28,7 @@
                                 <p> {{$person->story}}</p>
                             </div>
                             <div class="col-sm-7">
-                                <img class="thumbnail" src="data:image/jpg;base64,{{ $person->image }}">
+                                <img class="thumbnail" height="300" width="400" src="data:image/jpg;base64,{{ $person->image }}">
                             </div>
                         </div>
                     </div>
