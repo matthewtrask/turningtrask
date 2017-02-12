@@ -28,7 +28,8 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <script src="https://use.fontawesome.com/a15241e18a.js"></script>
+    <script src="//use.fontawesome.com/a15241e18a.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="app">

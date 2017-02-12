@@ -18,7 +18,10 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.admin');
+        $about = About::all();
+        $charleston = Charleston::all();
+
+        return view('admin.admin', ['about' => $about, 'charleston' => $charleston]);
     }
 
     public function about(Request $request)
@@ -57,6 +60,16 @@ class AdminController extends Controller
     }
 
     public function party(Request $request)
+    {
+
+    }
+
+    public function editAbout(Request $request)
+    {
+        //
+    }
+
+    public function destroyAbout(Request $request)
     {
 
     }

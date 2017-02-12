@@ -28,6 +28,19 @@
                     <button id="aboutSubmit" type="submit" class="btn btn-lg btn-default">Submit</button>
                 </form>
             </div>
+
+            <div class="col-sm-12">
+                <br><br><hr>
+                <div class="col-sm-9">
+                    @foreach($about as $story)
+                        <p> {{ $story->content }}</p>
+                    @endforeach
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-info" id="edit">Edit</button>
+                    <button class="btn btn-warning" id="delete">Delete</button>
+                </div>
+            </div>
         </div>
         <div class="form-group" id="charlestonHide">
             <div class="col-sm-12">

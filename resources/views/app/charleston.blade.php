@@ -49,25 +49,30 @@
             <div class="col-lg-3">
                 <p>Search Options</p><hr>
                 <label>
-                    <input type="checkbox" value="bar"> Bars
+                    <input type="checkbox" id="filters" value="bar"> Bars
                 </label><br>
                 <label>
-                    <input type="checkbox" value="restaurant"> Restaurant
+                    <input type="checkbox" id="filters" value="restaurant"> Restaurant
                 </label><br>
                 <label>
-                    <input type="checkbox" value="hotel"> Hotels
-           3     </label><br>
-                <label>
-                    <input type="checkbox" value="store"> Shops
+                    <input type="checkbox" id="filters" value="hotel"> Hotels
                 </label><br>
                 <label>
-                    <input type="checkbox" value="sightseeing"> Sightseeing
+                    <input type="checkbox" id="filters" value="store"> Shops
+                </label><br>
+                <label>
+                    <input type="checkbox" id="filters" value="sightseeing"> Sightseeing
                 </label>
             </div>
         </div>
 
-    <script>
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[type=checkbox]:checked').each(function() {
+                $("div.panel.panel-default").hide();
+                $("#" + $(this).val()).show();
+            });
+        });
     </script>
 
 @endsection
