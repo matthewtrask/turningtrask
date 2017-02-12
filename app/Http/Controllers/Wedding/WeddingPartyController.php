@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Wedding;
 
-use App\Wedding\Party;
+use App\Models\WeddingParty;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -21,7 +21,7 @@ class WeddingPartyController extends Controller
 
     public function index()
     {
-        $party = Party::all();
+        $party = WeddingParty::all();
 
         return view('app.wedding-party', ['party' => $party]);
     }

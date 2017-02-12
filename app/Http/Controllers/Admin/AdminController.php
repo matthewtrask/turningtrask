@@ -6,8 +6,10 @@ use App\Models\About;
 use App\Models\Charleston;
 use App\Models\WeddingParty;
 use App\Http\Controllers\Controller;
+use Aws\S3\S3Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -18,7 +20,10 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.admin');
+        $about = About::all();
+        $charleston = Charleston::all();
+
+        return view('admin.admin', ['about' => $about, 'charleston' => $charleston]);
     }
 
     public function about(Request $request)
@@ -59,5 +64,48 @@ class AdminController extends Controller
     public function party(Request $request)
     {
 
+        $party = new WeddingParty();
+
+        $party->name = $request->name;
+        $party->position = $request->position;
+        $party->story = $request->story;
+        $party->image_name = $request->file('photo');
+
+        $data = file_get_contents($request->photo);
+
+        $party->image = base64_encode($data);
+
+        $party->save();
+
+        return redirect('/admin');
+
+    }
+
+    public function editAbout(Request $request)
+    {
+        //
+    }
+
+    public function destroyAbout(Request $request)
+    {
+
+    }
+
+    public function editCharleston()
+    {
+        //
+    }
+
+    public function destroyCharleston()
+    {
+        //
+    }
+
+    private function s3client()
+    {
+        return new S3Client([
+            'version' => 'latest',
+            'region' => 'us-east-1'
+        ]);
     }
 }

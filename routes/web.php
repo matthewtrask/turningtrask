@@ -17,3 +17,4 @@ Route::get('/party', ['uses' => 'Wedding\WeddingPartyController@party']);
 Route::get('/admin', ['uses' => 'Admin\AdminController@index']);
 Route::post('/admin/about', ['uses' => 'Admin\AdminController@about']);
 Route::post('/admin/location', ['uses' => 'Admin\AdminController@location']);
+Route::post('/admin/party', ['uses' => 'Admin\AdminController@party']);
