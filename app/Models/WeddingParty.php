@@ -12,6 +12,7 @@ class WeddingParty extends Model
         'name',
         'position',
         'description',
-        'image_name'
+        'image_name',
+        'image'
     ];
 }

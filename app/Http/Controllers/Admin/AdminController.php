@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Aws\S3\S3Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -62,6 +63,7 @@ class AdminController extends Controller
 
     public function party(Request $request)
     {
+
         $party = new WeddingParty();
 
         $party->name = $request->name;
@@ -69,13 +71,11 @@ class AdminController extends Controller
         $party->story = $request->story;
         $party->image_name = $request->file('photo');
 
-        $party->save();
+        $data = file_get_contents($request->photo);
 
-        $this->s3client()->putObject([
-            'Bucket' => 'turningtrask',
-            'Key' => $request->file('photo')->getClientOriginalName(),
-            'Body' => $request->file('photo')
-        ]);
+        $party->image = base64_encode($data);
+
+        $party->save();
 
         return redirect('/admin');
 
@@ -91,9 +91,19 @@ class AdminController extends Controller
 
     }
 
+    public function editCharleston()
+    {
+        //
+    }
+
+    public function destroyCharleston()
+    {
+        //
+    }
+
     private function s3client()
     {
-        return $client = $s3 = new S3Client([
+        return new S3Client([
             'version' => 'latest',
             'region' => 'us-east-1'
         ]);
