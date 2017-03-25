@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="row">
-        <h2>While you are in Charleston for a few days, check out some of thess places we love!</h2>
+        <h2>While you are in Charleston for a few days, check out some of these places we love!</h2>
     </div>
 
         <div class="row">
